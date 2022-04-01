@@ -3,6 +3,7 @@
 #include <nds/arm9/videoGL.h>
 #include "BoardCellClass.h"
 #include <nds/arm9/input.h>
+#include <math.h>
 
 void OperationsClass::DoBoardScrolling(CommonDataClass* CommonData)
 {
@@ -41,7 +42,7 @@ void OperationsClass::DoBoardScrolling(CommonDataClass* CommonData)
 
 void OperationsClass::UpdateBoardLocation(CommonDataClass* CommonData)
 {
-	CommonData->LocationX = CommonData->LocationX + 0.01 * CommonData->Trigonometry.Sin((CommonData->Trigonometry.Pi * CommonData->HorizontalScrollCount) / (2.0 * 10.0));
+	CommonData->LocationX = CommonData->LocationX + 0.01 * sin((M_PI * CommonData->HorizontalScrollCount) / (2.0 * 10.0));
 	if(CommonData->LocationX > (0.08 + CommonData->BoardWidth * 0.015 / 2.0))
 	{
 		CommonData->LocationX = 0.08 + CommonData->BoardWidth * 0.015 / 2.0;
@@ -52,7 +53,7 @@ void OperationsClass::UpdateBoardLocation(CommonDataClass* CommonData)
 		CommonData->LocationX = -0.08 - CommonData->BoardWidth * 0.015 / 2.0;
 		CommonData->HorizontalScrollCount = 0;
 	};
-	CommonData->LocationZ = CommonData->LocationZ + 0.01 * CommonData->Trigonometry.Sin((CommonData->Trigonometry.Pi * CommonData->VerticalScrollCount) / (2.0 * 10.0));
+	CommonData->LocationZ = CommonData->LocationZ + 0.01 * sin((M_PI * CommonData->VerticalScrollCount) / (2.0 * 10.0));
 	if(CommonData->LocationZ > (0.05 + CommonData->BoardHeight * 0.015 / 2.0))
 	{
 		CommonData->LocationZ = 0.05 + CommonData->BoardHeight * 0.015 / 2.0;

@@ -3,6 +3,7 @@
 #include "OperationsClass.h"
 #include "StateMachineClass.h"
 #include "StartButtonZoomInStateClass.h"
+#include <math.h>
 
 LogoZoomInStateClass::LogoZoomInStateClass()
 : StateClass()
@@ -18,7 +19,7 @@ void LogoZoomInStateClass::Start(CommonDataClass* CommonData)
 void LogoZoomInStateClass::Run(CommonDataClass* CommonData)
 {
 	Count++;
-	Factor = CommonData->Trigonometry.Sin((Count * 5 * CommonData->Trigonometry.Pi) / (6 * 10));
+	Factor = sin((Count * 5 * M_PI) / (6 * 10));
 	if(Count >= 10)
 	{
 		CommonData->StateMachine->Switch(START_BUTTON_ZOOM_IN_STATE);

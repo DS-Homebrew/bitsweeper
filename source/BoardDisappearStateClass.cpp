@@ -2,7 +2,6 @@
 #include "CommonDataClass.h"
 #include "StateMachineClass.h"
 #include "BoardCellClass.h"
-#include "RandomNumberGeneratorClass.h"
 #include "LogoEnlargeStateClass.h"
 #include "OperationsClass.h"
 

@@ -22,9 +22,9 @@ void BoardWaitStateClass::Start(CommonDataClass* CommonData)
 
 	CommonData->HorizontalScrollCount = 0;
 	CommonData->VerticalScrollCount = 0;
-	if((CommonData->TimeStarted)&&(!(CommonData->LimitTimeReached)))
+	if(CommonData->TimeStarted && !CommonData->LimitTimeReached)
 	{
-		ElapsedTime =  ((CommonData->TickCount - CommonData->InitialTickCount) * 10000) / 598261;
+		ElapsedTime = ((CommonData->TickCount - CommonData->InitialTickCount) * 10000) / 598261;
 		ElapsedSeconds = ElapsedTime % 60;
 		CommonData->Second1 = ElapsedSeconds % 10;
 		CommonData->Second10 = ElapsedSeconds / 10;

@@ -22,8 +22,6 @@
 #include <nds/ndstypes.h>
 #include <nds/arm9/sprite.h>
 #include <nds/arm9/videoGL.h>
-#include "TrigonometryClass.h"
-#include "ArithmeticsClass.h"
 #include "BoardCellStateEnum.h"
 
 class CommonDataClass
@@ -64,10 +62,6 @@ public:
 	int Level;
 
 	bool LastGameWon;
-
-	TrigonometryClass Trigonometry;
-
-	ArithmeticsClass Arithmetics;
 
 	class RandomNumberGeneratorClass* RandomNumberGenerator;
 

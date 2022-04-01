@@ -6,6 +6,7 @@
 #include "BoardCellClass.h"
 #include "GameLostAppearStateClass.h"
 #include "OperationsClass.h"
+#include <math.h>
 
 BoardCellExplodeStateClass::BoardCellExplodeStateClass()
 : StateClass()
@@ -17,9 +18,9 @@ void BoardCellExplodeStateClass::Start(CommonDataClass* CommonData)
 	double Radius;
 
 	Count = 0;
-	Radius = CommonData->RandomNumberGenerator->Next() * 2 * CommonData->Trigonometry.Pi;
-	XDisplacement = floattov16(CommonData->Trigonometry.Cos(Radius) * 0.01);
-	ZDisplacement = floattov16(CommonData->Trigonometry.Sin(Radius) * 0.01);
+	Radius = CommonData->RandomNumberGenerator->Next() * 2 * M_PI;
+	XDisplacement = floattov16(cos(Radius) * 0.01);
+	ZDisplacement = floattov16(sin(Radius) * 0.01);
 }
 
 void BoardCellExplodeStateClass::Run(CommonDataClass* CommonData)
@@ -27,9 +28,9 @@ void BoardCellExplodeStateClass::Run(CommonDataClass* CommonData)
 	double Radius;
 
 	Count++;
-	Radius = CommonData->RandomNumberGenerator->Next() * 2 * CommonData->Trigonometry.Pi;
-	XDisplacement = floattov16(CommonData->Trigonometry.Cos(Radius) * 0.01 * ((30.0 - Count) / 30.0));
-	ZDisplacement = floattov16(CommonData->Trigonometry.Sin(Radius) * 0.01 * ((30.0 - Count) / 30.0));
+	Radius = CommonData->RandomNumberGenerator->Next() * 2 * M_PI;
+	XDisplacement = floattov16(cos(Radius) * 0.01 * ((30.0 - Count) / 30.0));
+	ZDisplacement = floattov16(sin(Radius) * 0.01 * ((30.0 - Count) / 30.0));
 	if(Count >= 30)
 	{
 		CommonData->HorizontalScrollCount = 0;

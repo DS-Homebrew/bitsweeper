@@ -12,24 +12,18 @@ int BestScoresTableClass::BufferSize()
 
 void BestScoresTableClass::LoadFrom(char* Buffer)
 {
-	int i;
-	char* b;
-
-	b = Buffer;
-	for(i = 0; i < 10; i++)
+	char* b = Buffer;
+	for (int i = 0; i < 10; i++)
 	{
 		Lines[i].LoadFrom(b);
 		b = b + Lines[i].LineSize();
-	};
+	}
 }
 
 void BestScoresTableClass::SaveTo(char* Buffer)
 {
-	int i;
-	char* b;
-
-	b = Buffer;
-	for(i = 0; i < 10; i++)
+	char* b = Buffer;
+	for (int i = 0; i < 10; i++)
 	{
 		Lines[i].SaveTo(b);
 		b = b + Lines[i].LineSize();

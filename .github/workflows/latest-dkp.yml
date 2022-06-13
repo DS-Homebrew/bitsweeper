@@ -25,7 +25,7 @@ jobs:
       current_date: ${{ steps.build.outputs.current_date }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
       - name: Install tools
         run: |
           sudo apt-get update
@@ -46,7 +46,7 @@ jobs:
 
           echo ::set-output name=current_date::$(date +"%Y%m%d-%H%M%S")
       - name: Publish build to GH Actions
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           path: bitsweeper.nds
           name: bitsweeper-nightly

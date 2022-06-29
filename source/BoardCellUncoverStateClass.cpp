@@ -16,7 +16,7 @@ void BoardCellUncoverStateClass::Start(CommonDataClass* CommonData)
 {
 	int i = 0;
 	if (CommonData->Board[CommonData->CellsBeingUncoveredList[i]].Explodes) {
-		for (; i < CommonData->BoardLength; i++;) {
+		for (; i < CommonData->BoardLength; i++) {
 			if (!(i != CommonData->CellsBeingUncoveredList[0] && CommonData->Board[i].Explodes))
 				continue;
 

@@ -14,21 +14,21 @@ BoardCellUncoverStateClass::BoardCellUncoverStateClass()
 
 void BoardCellUncoverStateClass::Start(CommonDataClass* CommonData)
 {
-	int j;
-	int k;
-	int l;
-
 	int i = 0;
 	if (CommonData->Board[CommonData->CellsBeingUncoveredList[i]].Explodes) {
-		while (i < CommonData->BoardLength) {
-			if (i != CommonData->CellsBeingUncoveredList[0] && CommonData->Board[i].Explodes) {
-				CommonData->CellsBeingUncoveredList[CommonData->CellsBeingUncoveredSize] = i;
-				CommonData->CellsBeingUncoveredSize++;
-				CommonData->Board[i].JustMarkedForUncover = true;
-			}
-			i++;
+		for (; i < CommonData->BoardLength; i++;) {
+			if (!(i != CommonData->CellsBeingUncoveredList[0] && CommonData->Board[i].Explodes))
+				continue;
+
+			CommonData->CellsBeingUncoveredList[CommonData->CellsBeingUncoveredSize] = i;
+			CommonData->CellsBeingUncoveredSize++;
+			CommonData->Board[i].JustMarkedForUncover = true;
 		}
 	} else {
+		int j;
+		int k;
+		int l;
+
 		while (i < CommonData->CellsBeingUncoveredSize) {
 			k = CommonData->CellsBeingUncoveredList[i];
 			if (CommonData->Board[k].ExplodingCellsAround != 0) {
